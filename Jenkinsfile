@@ -33,3 +33,57 @@ pipeline {
         }
     }
 }
+
+// This is my Jenkinsfile
+// pipeline{
+//     agent any
+//     stages{
+//         stage("Code"){
+//             steps{
+//             echo "Cloning the Code"
+//             git url:"https://github.com/LondheShubham153/django-notes-app.git", branch: "main"
+//             }
+//         }
+//         stage("build"){
+//             steps{
+//             echo "Building the Code"
+//             sh "docker build -t my-dev-app:latest ."
+            
+//             }
+//         }
+//         stage("Push to DockerHub"){
+//             steps{
+//             echo "Pushing to Image to DockerHUB" 
+            
+//             withCredentials([usernamePassword(credentialsId: 'dockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+//             sh "docker tag my-devops-app $USERNAME/my-devops-app:latest"
+//             sh "docker login -u $USERNAME -p $PASSWORD"
+//             sh 'echo $PASSWORD'
+            
+//             // echo USERNAME 
+//             echo "username is $USERNAME"
+//             sh "docker push $USERNAME/my-devops-app:latest"
+//             }
+//             }
+//         }
+//         stage("Deploy"){
+//             steps{
+//             echo "Deplying the container"
+//             sh "docker run -d -p8000:8000 anu374/my-devops-app:latest"
+//             }
+//         }
+//         stage("Git push"){
+//             steps{
+//                 echo "Git pushing"
+//                 withCredentials([usernamePassword(credentialsId: 'Github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+//                 sh "docker tag my-devops-app $USERNAME/my-devops-app:latest"
+//                 sh "git branch -m main master"
+//                 sh "git fetch origin"
+//                 sh "git branch -u origin/master master"
+//                 sh "git remote set-head origin -a"
+//                 }
+//             }
+//         }
+//     }
+    
+// }
